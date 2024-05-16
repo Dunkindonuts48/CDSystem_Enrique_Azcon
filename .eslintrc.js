@@ -24,10 +24,6 @@ module.exports = {
             "error",
             "double"
         ],
-        "no-unused-vars": "off",
-        "semi": [
-            "error",
-            "always"
-        ]
+        "no-unused-vars": "off"
     }
 };
