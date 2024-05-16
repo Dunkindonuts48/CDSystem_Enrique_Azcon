@@ -4,44 +4,44 @@ const INVALID_INTEGER = "Please enter a valid integer";
 const OUT_OF_RANGE = "Out of range (1-3999)";
 
 function init() {
-    // Load elements once to avoid repetition on every invocation
-    var modeCheckbox = document.querySelector("input[type='checkbox']");
-    var header = document.querySelector("h1");
-    var convertButton = document.querySelector(".convert-button");
-    var outputArea = document.querySelector(".convert-output");
-    var inputArea = document.querySelector("input[type='text']");
+  // Load elements once to avoid repetition on every invocation
+  var modeCheckbox = document.querySelector("input[type='checkbox']");
+  var header = document.querySelector("h1");
+  var convertButton = document.querySelector(".convert-button");
+  var outputArea = document.querySelector(".convert-output");
+  var inputArea = document.querySelector("input[type='text']");
 
-    modeCheckbox.addEventListener("change", (e) => {
-        header.innerHTML = getModeTitle(e.target.checked);
-    });
+  modeCheckbox.addEventListener("change", (e) => {
+    header.innerHTML = getModeTitle(e.target.checked);
+  });
 
-    const getModeTitle = (integerToRoman) => {
-        return integerToRoman ? "Integer To Roman" : "Roman To Integer";
-    };
+  const getModeTitle = (integerToRoman) => {
+    return integerToRoman ? "Integer To Roman" : "Roman To Integer";
+  };
 
-    // Now, the conversion operation only performs the operation.
-    // Things we have extracted to this listener:
-    // 1 - Read the UI inputs (inputArea.value)
-    // 2 - Write the UI output (outputArea.innerHTML)
-    // 3 - Show error messages
-    // This is cleaner and also removes code duplications
-    convertButton.addEventListener("click", () => {
-        let inputValue = inputArea.value;
-        let conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
-        if (conversion.result) {
-            outputArea.innerHTML = conversion.value;
-        } else {
-            alert(conversion.message);
-        }
-    });
+  // Now, the conversion operation only performs the operation.
+  // Things we have extracted to this listener:
+  // 1 - Read the UI inputs (inputArea.value)
+  // 2 - Write the UI output (outputArea.innerHTML)
+  // 3 - Show error messages
+  // This is cleaner and also removes code duplications
+  convertButton.addEventListener("click", () => {
+    let inputValue = inputArea.value;
+    let conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
+    if (conversion.result) {
+      outputArea.innerHTML = conversion.value;
+    } else {
+      alert(conversion.message);
+    }
+  });
 }
 
 // Conversion method: Roman to Integer
 const convertRomanToInteger = (roman) => {
   let response = {
-    value: 0, 
+    value: 0,
     message: '',
-    result: false 
+    result: false
   };
 
   // Regexp to check if a string is a valid roman number
@@ -81,8 +81,8 @@ const convertRomanToInteger = (roman) => {
 const convertIntegerToRoman = (num) => {
   let response = {
     value: '',
-    message: '', 
-    result: false 
+    message: '',
+    result: false
   };
 
   const numberRegex = /^\d+$/;
@@ -95,7 +95,7 @@ const convertIntegerToRoman = (num) => {
 
   if (Number(num) > 3999 || Number(num) < 1) {
     response.message = OUT_OF_RANGE;
-    return response;   
+    return response;
   }
 
   const mapping = {
@@ -116,3 +116,6 @@ const convertIntegerToRoman = (num) => {
   response.result = true;
   return response;
 };
+
+// Call init function when the DOM is ready
+document.addEventListener("DOMContentLoaded", init);
