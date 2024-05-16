@@ -14,13 +14,7 @@ module.exports = {
         ],
         "indent": [
             "error",
-            2, 
-            3, 
-            4,
-            5,
-            6,
-            7,
-            8
+            4
         ],
         "linebreak-style": [
             "error",
