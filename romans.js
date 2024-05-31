@@ -32,8 +32,14 @@ function init() {
     var conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
     if (conversion.result) {
       outputArea.innerHTML = conversion.value;
+      gtag('event', 'SystemTask7', {
+        'ResultsTask7': conversion.value
+    });
     } else {
       alert(conversion.message);
+      gtag('event', 'SystemTask7_error', {
+        'Results_SMG': conversion.message
+      });
     }
   });
 
