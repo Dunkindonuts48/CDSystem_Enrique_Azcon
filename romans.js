@@ -1,3 +1,5 @@
+/* global gtag */
+
 // Constants for the literals
 const INVALID_ROMAN = "Please enter a valid roman";
 const INVALID_INTEGER = "Please enter a valid integer";
